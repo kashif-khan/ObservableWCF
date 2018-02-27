@@ -12,18 +12,25 @@ namespace WcfServiceLibrary
         bool Pulse();
         void Ping();
     }
-    public interface ISubscription : IHeartbeat
-    {
-        void Subscribe(string ServiceName, IObservableService Client);
-        void Unsubscribe(string ServiceName);
 
+    [ServiceContract(CallbackContract = typeof(INotifications))]
+    public interface ISubscription : IHeartbeat, INotifications
+    {
+        void Subscribe(string ServiceName, ISubscription Client);
+        void Unsubscribe(string ServiceName);
     }
-    [ServiceContract(CallbackContract = typeof(IObservableService))]
-    public interface IObservableService : ISubscription
+
+    [ServiceContract]
+    public interface INotifications
+    {
+        [OperationContract(IsOneWay = true)]
+        void AnnounceClientAgeToClients(int newValue);
+    }
+
+    [ServiceContract]
+    public interface IUserService
     {
         [OperationContract(IsOneWay = true)]
         void MethodThatWillChangeData(int value);
-        [OperationContract(IsOneWay = true)]
-        void SendUpdatedDataToClients(int newValue);
     }
 }

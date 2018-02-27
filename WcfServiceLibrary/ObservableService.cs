@@ -7,17 +7,18 @@ using System.Text;
 
 namespace WcfServiceLibrary
 {
-    public class ObservableService : IObservableService
+    public class ObservableService : IUserService, ISubscription
     {
-        private static Dictionary<string, IObservableService> _CallbackList = new Dictionary<string, IObservableService>();
-        private int MyIntVariable;
+        private static Dictionary<string, ISubscription> _CallbackList = new Dictionary<string, ISubscription>();
+        private int ClientAge;
+
         public void MethodThatWillChangeData(int newValue)
         {
-            var previousValue = MyIntVariable;
-            MyIntVariable = newValue;
+            var PreviousClientAge = ClientAge;
+            ClientAge = newValue;
             foreach (var item in _CallbackList)
             {
-                item.Value.SendUpdatedDataToClients(newValue);
+                item.Value.AnnounceClientAgeToClients(newValue);
             }
         }
 
@@ -28,7 +29,7 @@ namespace WcfServiceLibrary
             {
                 try
                 {
-                    _CallbackList[test[i]].Pulse()
+                    _CallbackList[test[i]].Pulse();
                 }
                 catch (Exception)
                 {
@@ -42,12 +43,12 @@ namespace WcfServiceLibrary
             return true;
         }
 
-        public void SendUpdatedDataToClients(int newValue)
+        public void AnnounceClientAgeToClients(int newValue)
         {
-            MyIntVariable = newValue;
+            ClientAge = newValue;
         }
 
-        public void Subscribe(string ServiceName, IObservableService Client)
+        public void Subscribe(string ServiceName, ISubscription Client)
         {
             if (!_CallbackList.Keys.Contains(ServiceName))
             {

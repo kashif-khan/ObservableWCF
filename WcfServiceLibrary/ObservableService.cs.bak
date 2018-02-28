@@ -76,6 +76,7 @@ namespace WcfServiceLibrary
 
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
+            _writer.WriteLine("Pinging the data");
             this.RetrySubscription();
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
@@ -15,11 +16,14 @@ namespace HostConsoleApp
     {
         static void Main(string[] args)
         {
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.Clear();
             Console.Title = Assembly.GetExecutingAssembly().FullName;
             Maximize();
             try
             {
-                ServiceHost host = new ServiceHost(typeof(ObservableService));
+                var host = new ServiceHost(typeof(ObservableService));
                 host.Open();
                 Console.WriteLine($"Host has been started and running on the following endpoints:");
                 foreach (var item in host.Description.Endpoints)
@@ -27,7 +31,7 @@ namespace HostConsoleApp
                     Console.WriteLine(item.Address);
                 }
                 Console.WriteLine("Press any to exit...");
-                Console.ReadLine();
+                Console.ReadKey();
                 host.Close();
             }
             catch (Exception ex)

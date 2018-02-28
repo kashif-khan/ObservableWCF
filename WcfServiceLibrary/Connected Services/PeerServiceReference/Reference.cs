@@ -8,11 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UserConsoleApp.ServiceReference {
+namespace WcfServiceLibrary.PeerServiceReference {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IUserService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="PeerServiceReference.IUserService")]
     public interface IUserService {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IUserService/MethodThatWillChangeData")]
@@ -20,21 +20,15 @@ namespace UserConsoleApp.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IUserService/MethodThatWillChangeData")]
         System.Threading.Tasks.Task MethodThatWillChangeDataAsync(int value);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IUserService/Initiate")]
-        void Initiate();
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IUserService/Initiate")]
-        System.Threading.Tasks.Task InitiateAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IUserServiceChannel : UserConsoleApp.ServiceReference.IUserService, System.ServiceModel.IClientChannel {
+    public interface IUserServiceChannel : WcfServiceLibrary.PeerServiceReference.IUserService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class UserServiceClient : System.ServiceModel.ClientBase<UserConsoleApp.ServiceReference.IUserService>, UserConsoleApp.ServiceReference.IUserService {
+    public partial class UserServiceClient : System.ServiceModel.ClientBase<WcfServiceLibrary.PeerServiceReference.IUserService>, WcfServiceLibrary.PeerServiceReference.IUserService {
         
         public UserServiceClient() {
         }
@@ -62,53 +56,45 @@ namespace UserConsoleApp.ServiceReference {
         public System.Threading.Tasks.Task MethodThatWillChangeDataAsync(int value) {
             return base.Channel.MethodThatWillChangeDataAsync(value);
         }
-        
-        public void Initiate() {
-            base.Channel.Initiate();
-        }
-        
-        public System.Threading.Tasks.Task InitiateAsync() {
-            return base.Channel.InitiateAsync();
-        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.ISubscription", CallbackContract=typeof(UserConsoleApp.ServiceReference.ISubscriptionCallback))]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="PeerServiceReference.ISubscription", CallbackContract=typeof(WcfServiceLibrary.PeerServiceReference.ISubscriptionCallback))]
     public interface ISubscription {
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/INotifications/UpdateData")]
-        void UpdateData(int newValue);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/INotifications/AnnounceClientAgeToClients")]
+        void AnnounceClientAgeToClients(int newValue);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/INotifications/UpdateData")]
-        System.Threading.Tasks.Task UpdateDataAsync(int newValue);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/INotifications/AnnounceClientAgeToClients")]
+        System.Threading.Tasks.Task AnnounceClientAgeToClientsAsync(int newValue);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ISubscription/Subscribe")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISubscription/Subscribe", ReplyAction="http://tempuri.org/ISubscription/SubscribeResponse")]
         void Subscribe(string ServiceName);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ISubscription/Subscribe")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISubscription/Subscribe", ReplyAction="http://tempuri.org/ISubscription/SubscribeResponse")]
         System.Threading.Tasks.Task SubscribeAsync(string ServiceName);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ISubscription/Unsubscribe")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISubscription/Unsubscribe", ReplyAction="http://tempuri.org/ISubscription/UnsubscribeResponse")]
         void Unsubscribe(string ServiceName);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ISubscription/Unsubscribe")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISubscription/Unsubscribe", ReplyAction="http://tempuri.org/ISubscription/UnsubscribeResponse")]
         System.Threading.Tasks.Task UnsubscribeAsync(string ServiceName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface ISubscriptionCallback {
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ISubscription/UpdateData")]
-        void UpdateData(int newValue);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/ISubscription/AnnounceClientAgeToClients")]
+        void AnnounceClientAgeToClients(int newValue);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface ISubscriptionChannel : UserConsoleApp.ServiceReference.ISubscription, System.ServiceModel.IClientChannel {
+    public interface ISubscriptionChannel : WcfServiceLibrary.PeerServiceReference.ISubscription, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class SubscriptionClient : System.ServiceModel.DuplexClientBase<UserConsoleApp.ServiceReference.ISubscription>, UserConsoleApp.ServiceReference.ISubscription {
+    public partial class SubscriptionClient : System.ServiceModel.DuplexClientBase<WcfServiceLibrary.PeerServiceReference.ISubscription>, WcfServiceLibrary.PeerServiceReference.ISubscription {
         
         public SubscriptionClient(System.ServiceModel.InstanceContext callbackInstance) : 
                 base(callbackInstance) {
@@ -130,12 +116,12 @@ namespace UserConsoleApp.ServiceReference {
                 base(callbackInstance, binding, remoteAddress) {
         }
         
-        public void UpdateData(int newValue) {
-            base.Channel.UpdateData(newValue);
+        public void AnnounceClientAgeToClients(int newValue) {
+            base.Channel.AnnounceClientAgeToClients(newValue);
         }
         
-        public System.Threading.Tasks.Task UpdateDataAsync(int newValue) {
-            return base.Channel.UpdateDataAsync(newValue);
+        public System.Threading.Tasks.Task AnnounceClientAgeToClientsAsync(int newValue) {
+            return base.Channel.AnnounceClientAgeToClientsAsync(newValue);
         }
         
         public void Subscribe(string ServiceName) {

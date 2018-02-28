@@ -16,7 +16,9 @@ namespace WcfServiceLibrary
     [ServiceContract(CallbackContract = typeof(INotifications))]
     public interface ISubscription : IHeartbeat, INotifications
     {
-        void Subscribe(string ServiceName, ISubscription Client);
+        [OperationContract(IsOneWay = true)]
+        void Subscribe(string ServiceName);
+        [OperationContract(IsOneWay = true)]
         void Unsubscribe(string ServiceName);
     }
 
@@ -24,7 +26,7 @@ namespace WcfServiceLibrary
     public interface INotifications
     {
         [OperationContract(IsOneWay = true)]
-        void AnnounceClientAgeToClients(int newValue);
+        void UpdateData(int newValue);
     }
 
     [ServiceContract]

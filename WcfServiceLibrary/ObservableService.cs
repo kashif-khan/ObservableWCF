@@ -11,7 +11,7 @@ using WcfServiceLibrary.PeerServiceReference;
 
 namespace WcfServiceLibrary
 {
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single, UseSynchronizationContext = false)]
+    [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class ObservableService : IUserService, ISubscription
     {
         private static Dictionary<string, INotifications> _Peers = new Dictionary<string, INotifications>();

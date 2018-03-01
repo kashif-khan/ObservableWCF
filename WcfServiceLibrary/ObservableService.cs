@@ -27,6 +27,7 @@ namespace WcfServiceLibrary
         {
 
         }
+
         public ObservableService(IWriter writer)
         {
             _writer = writer;

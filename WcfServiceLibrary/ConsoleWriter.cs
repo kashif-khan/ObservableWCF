@@ -2,7 +2,7 @@
 
 namespace WcfServiceLibrary
 {
-    internal class ConsoleWriter : IWriter
+    public class ConsoleWriter : IWriter
     {
         public void WriteLine(string v)
         {

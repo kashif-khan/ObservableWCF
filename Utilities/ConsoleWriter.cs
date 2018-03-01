@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WcfServiceLibrary
+namespace Utilities
 {
     public class ConsoleWriter : IWriter
     {

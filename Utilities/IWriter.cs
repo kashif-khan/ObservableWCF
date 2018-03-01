@@ -1,4 +1,4 @@
-﻿namespace WcfServiceLibrary
+﻿namespace Utilities
 {
     public interface IWriter
     {

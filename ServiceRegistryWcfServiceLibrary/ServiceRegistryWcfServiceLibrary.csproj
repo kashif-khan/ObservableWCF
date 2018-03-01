@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{D3591BBB-817F-47CD-A0DD-5C6F7C710509}</ProjectGuid>
+    <ProjectGuid>{BDCDF18D-D9A2-4751-A2F6-C7C6721F3026}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WcfServiceLibrary</RootNamespace>
-    <AssemblyName>WcfServiceLibrary</AssemblyName>
+    <RootNamespace>ServiceRegistryWcfServiceLibrary</RootNamespace>
+    <AssemblyName>ServiceRegistryWcfServiceLibrary</AssemblyName>
     <ProjectTypeGuids>{3D9AD99F-2412-4246-B90B-4EAA41C64699};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <StartArguments>/client:"WcfTestClient.exe"</StartArguments>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
@@ -19,7 +19,7 @@
     <XsdCodeGenReuseTypesFlag>True</XsdCodeGenReuseTypesFlag>
     <XsdCodeGenReuseTypesMode>All</XsdCodeGenReuseTypesMode>
     <XsdCodeGenReferences />
-    <XsdCodeGenNamespaceMappings>%2a, WcfServiceLibrary.ContractTypes</XsdCodeGenNamespaceMappings>
+    <XsdCodeGenNamespaceMappings>%2a, ServiceRegistryWcfServiceLibrary.ContractTypes</XsdCodeGenNamespaceMappings>
     <XsdCodeGenCollectionTypes>System.Array%3bSystem.Collections.Generic.Dictionary`2</XsdCodeGenCollectionTypes>
     <XsdCodeGenExcludedTypes />
     <XsdCodeGenImportXmlTypes>True</XsdCodeGenImportXmlTypes>
@@ -47,70 +47,33 @@
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connected Services\PeerServiceReference\Reference.cs">
+    <Compile Include="Connected Services\PeerDiagnosticServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Connected Services\ServiceRegistryReference\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="IDiagnostic.cs" />
-    <Compile Include="INotifications.cs" />
-    <Compile Include="ISubscription.cs" />
-    <Compile Include="IUserService.cs" />
+    <Compile Include="IServiceRegistry.cs" />
+    <Compile Include="IServiceRegistryBasics.cs" />
+    <Compile Include="IServiceRegistryCallback.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ObservableService.cs" />
+    <Compile Include="ServiceRegistry.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Connected Services\PeerServiceReference\service.wsdl" />
-    <None Include="Connected Services\PeerServiceReference\service.xsd">
+    <None Include="Connected Services\PeerDiagnosticServiceReference\service.wsdl" />
+    <None Include="Connected Services\PeerDiagnosticServiceReference\service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\PeerServiceReference\service1.xsd">
+    <None Include="Connected Services\PeerDiagnosticServiceReference\service1.xsd">
       <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceRegistryReference\item.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceRegistryReference\item1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceRegistryReference\item2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceRegistryReference\ServiceRegistry.wsdl" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\PeerServiceReference\" />
-    <WCFMetadataStorage Include="Connected Services\ServiceRegistryReference\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\PeerServiceReference\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\PeerServiceReference\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\PeerServiceReference\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -120,16 +83,19 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServiceRegistryReference\item.disco" />
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServiceRegistryReference\configuration91.svcinfo" />
+    <WCFMetadataStorage Include="Connected Services\PeerDiagnosticServiceReference\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServiceRegistryReference\configuration.svcinfo" />
+    <None Include="Connected Services\PeerDiagnosticServiceReference\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServiceRegistryReference\Reference.svcmap">
+    <None Include="Connected Services\PeerDiagnosticServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\PeerDiagnosticServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
